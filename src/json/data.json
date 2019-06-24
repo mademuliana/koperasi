@@ -1,0 +1,111 @@
+{
+  "users": [
+    {
+      "kta": "1104505065",
+      "nama_lengkap": "Yuda Aditya Putra",
+      "tanggal_lahir": "AGRRAGAR",
+      "jenis_kelamin": "Pria",
+      "alamat_lengkap": "Jln Banyar anyar",
+      "tgl_bergabung": null,
+      "nomor_telephone": "869373",
+      "email": "",
+      "status": "Active",
+      "id": 0
+    },
+    {
+      "id": 1,
+      "kta": "1104505066",
+      "nama_lengkap": "Dody Pratama",
+      "tanggal_lahir": null,
+      "jenis_kelamin": "Pria",
+      "alamat_lengkap": "Jln raya Sesetan",
+      "tgl_bergabung": null,
+      "nomor_telephone": "0361471233",
+      "email": "",
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "kta": "1104505067",
+      "nama_lengkap": "Bagus Pratama",
+      "tanggal_lahir": null,
+      "jenis_kelamin": "Pria",
+      "alamat_lengkap": "Jln raya Mengwi",
+      "tgl_bergabung": null,
+      "nomor_telephone": "09875431",
+      "email": "",
+      "status": "Active"
+    },
+    {
+      "id": 3,
+      "kta": "1104505068",
+      "nama_lengkap": "Ayu Aristya",
+      "tanggal_lahir": null,
+      "jenis_kelamin": "Wanita",
+      "alamat_lengkap": "Jln raya moangmaning denpasar",
+      "tgl_bergabung": null,
+      "nomor_telephone": "056789",
+      "email": "",
+      "status": "Active"
+    },
+    {
+      "id": 4,
+      "kta": "1104505069",
+      "nama_lengkap": "putu hangga",
+      "tanggal_lahir": null,
+      "jenis_kelamin": "Pria",
+      "alamat_lengkap": "Jln raya kertagosa gianyar",
+      "tgl_bergabung": null,
+      "nomor_telephone": "08578351920",
+      "email": "",
+      "status": "Active"
+    }
+  ],
+  "simpanan": [
+    {
+      "id": 0,
+      "kta": "1104505065",
+      "penyetor": "Yuda Aditya Putra",
+      "jenis_setoran": "pokok",
+      "tanggal_setoran": "01/02/2019",
+      "jumlah_setoran": "1233334",
+      "total_setoran": "3453000"
+    },
+    {
+      "id": 1,
+      "kta": "1104505066",
+      "penyetor": "Dody Pratama",
+      "jenis_setoran": "wajib",
+      "tanggal_setoran": "01/02/2019",
+      "jumlah_setoran": "53000",
+      "total_setoran": "433255"
+    },
+    {
+      "id": 2,
+      "kta": "1104505067",
+      "penyetor": "Bagus Pratama",
+      "jenis_setoran": "pokok",
+      "tanggal_setoran": "01/02/2019",
+      "jumlah_setoran": "980000",
+      "total_setoran": "100000"
+    },
+    {
+      "id": 3,
+      "kta": "1104505068",
+      "penyetor": "Ayu Aristya",
+      "jenis_setoran": "pokok",
+      "tanggal_setoran": "01/02/2019",
+      "jumlah_setoran": "54400",
+      "total_setoran": "54333300"
+    },
+    {
+      "id": 4,
+      "kta": "1104505069",
+      "penyetor": "putu hangga",
+      "jenis_setoran": "wajib",
+      "tanggal_setoran": "01/02/2019",
+      "jumlah_setoran": "8880000",
+      "total_setoran": "100000"
+    }
+  ]
+}
