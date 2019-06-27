@@ -14,7 +14,7 @@
                    <div class="card text-white bg-success mb-3" style="max-width: 22rem;" >
                     <div class="row card-header">
                         <div class="col-4"><img class="card-img-top " src="../images/bag.png" alt="Card image cap"></div>
-                        <div class="col-8"><h4>simpanan</h4><h7>Daftarkan simpanan anda sekarang</h7></div>
+                        <div class="col-8"><h4>Pendaftaran Simpanan</h4><h7>Daftarkan simpanan anda sekarang</h7></div>
                     </div>
                     <div class="card-body text-white text-right">
                         <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon alt " style="font-size:2em;" />
@@ -23,7 +23,7 @@
                     <div class="card text-white bg-success mb-3" style="max-width: 22rem;">
                     <div class="row card-header">
                         <div class="col-4"><img class="card-img-top " src="../images/list-view.png" alt="Card image cap"></div>
-                        <div class="col-8"><h4>Daftar Anggota</h4><h7>Daftar seluruh anggota yang sudah bergabung</h7></div>
+                        <div class="col-8"><h4>Anggota Terdaftar    </h4><h7>Daftar seluruh anggota terdaftar</h7></div>
                     </div>
                     <div class="card-body text-white text-right">
                         <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon alt " style="font-size:2em;" />
@@ -32,7 +32,7 @@
                     <div class="card text-white bg-success mb-3" style="max-width: 22rem;">
                     <div class="row card-header">
                         <div class="col-4"><img class="card-img-top " src="../images/list-add.png" alt="Card image cap"></div>
-                        <div class="col-8"><h4>Pendaftaran</h4><h7>Form pendaftaran anggota koperasi</h7></div>
+                        <div class="col-8"><h4>Pendaftaran Anggota</h4><h7>Form pendaftaran anggota koperasi</h7></div>
                     </div>
                     <div class="card-body text-white text-right">
                         <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon alt " style="font-size:2em;" />

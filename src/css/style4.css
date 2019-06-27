@@ -8,6 +8,18 @@ body {
     background: #fafafa;
 }
 
+.button {
+    background-color: white;
+    border: none;
+    color: #2fa854;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 50%;
+  }
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
@@ -61,8 +73,8 @@ span {
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 270px;
+    max-width: 270px;
     background: #2fa854;
     color: #fff;
     transition: all 0.3s;
@@ -86,9 +98,31 @@ span {
 #sidebar ul li a {
     text-align: left;
 }
+#sidebar ul li a .maximize{
+    display: none;
+}
+#sidebar.active ul li a .maximize{
+    display: block;
+}
+#sidebar.active ul li a .minimize{
+    display: none;
+}
+
+#sidebar ul li ul li .maximize{
+    display: none;
+}
+#sidebar.active ul li ul li  .maximize{
+    display: block;
+}
+#sidebar.active ul li ul li  .minimize{
+    display: none;
+}
 
 #sidebar.active ul li a {
-    padding: 20px 10px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-right: 15px;
     text-align: center;
     font-size: 0.85em;
 }
@@ -114,7 +148,10 @@ span {
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-right: 15px;
     background: #2fa854;
 }
 

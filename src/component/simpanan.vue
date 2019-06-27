@@ -16,16 +16,16 @@
                         <div class="col-4"><img class="card-img-top " src="../images/shield.png" alt="Card image cap"></div>
                         <div class="col-8"><h4>Simpanan pokok</h4><h7>Setor simpanan anda sebagai simpanan pokok</h7></div>
                     </div>
-                    <div class="card-body text-white text-right">
+                    <div class="card-body text-white text-right" @click="simpananPokokTab()">
                         <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon alt " style="font-size:2em;" />
                     </div>
                     </div>
-                    <div class="card text-white bg-success mb-3" style="max-width: 22rem;">
+                    <div class="card text-white bg-success mb-3" style="max-width: 22rem;" >
                     <div class="row card-header">
                         <div class="col-4"><img class="card-img-top " src="../images/arrows.png" alt="Card image cap"></div>
                         <div class="col-8"><h4>Simpanan wajib</h4><h7>Setor simpanan anda sebagai simpanan wajib</h7></div>
                     </div>
-                    <div class="card-body text-white text-right">
+                    <div class="card-body text-white text-right" @click="simpananWajibTab()">
                         <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon alt " style="font-size:2em;" />
                     </div>
                     </div>
@@ -34,7 +34,7 @@
                         <div class="col-4"><img class="card-img-top " src="../images/bag.png" alt="Card image cap"></div>
                         <div class="col-8"><h4>Simpanan sukarela</h4><h7>Setor simpanan anda sebagai simpanan sukarela</h7></div>
                     </div>
-                    <div class="card-body text-white text-right">
+                    <div class="card-body text-white text-right" @click="simpananSukarelaTab()">
                         <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon alt " style="font-size:2em;" />
                     </div>
                     </div>
@@ -50,12 +50,7 @@
 <script>
 
 export default {
-
-    data(){
-        return{
-            isActive: true
-        }     
-    },
+   
     methods: {
     toggleClass: function(event){
        // Check value
@@ -65,7 +60,59 @@ export default {
          this.isActive = true;
        }
 
-    }
+    },
+    data(){
+        return{
+            isActive: true,
+            homeActive:false,
+            listActive:true,
+            formActive:true,
+            simpananActive:true,
+            pokokActive:true,
+            wajibActive:true,
+            sukarelaActive:true,
+            sPokokActive:true,
+            sWajibActive:true,
+            sSukarelaActive:true
+        }     
+    },
+    simpananPokokTab: function(event){
+        this.homeActive=true;
+        this.listActive=true,
+        this.formActive=true,
+        this.simpananActive=true,
+        this.pokokActive=true,
+        this.wajibActive=true,
+        this.sukarelaActive=true,
+        this.sPokokActive=false,
+        this.sWajibActive=true,
+        this.sSukarelaActive=true
+    },
+    simpananWajibTab: function(event){
+        this.homeActive=true;
+        this.listActive=true,
+        this.formActive=true,
+        this.simpananActive=true,
+        this.pokokActive=true,
+        this.wajibActive=true,
+        this.sukarelaActive=true,
+        this.sPokokActive=true,
+        this.sWajibActive=false,
+        this.sSukarelaActive=true
+    },
+    simpananSukarelaTab: function(event){
+        this.homeActive=true;
+        this.listActive=true,
+        this.formActive=true,
+        this.simpananActive=true,
+        this.pokokActive=true,
+        this.wajibActive=true,
+        this.sukarelaActive=true,
+        this.sPokokActive=true,
+        this.sWajibActive=true,
+        this.sSukarelaActive=false
+    },
+
   }
 }
 </script>

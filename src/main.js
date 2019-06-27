@@ -12,6 +12,13 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faList } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBillAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
+import { faHome} from '@fortawesome/free-solid-svg-icons';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faShieldAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHandHoldingUsd} from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -28,7 +35,7 @@ export default {
   }
 }
 
-library.add(faPen,faPlus,faMinus,faSearch,faArrowRight)
+library.add(faPen,faPlus,faMinus,faSearch,faArrowRight,faList,faMoneyBillWave,faUsers,faHome,faHandHoldingUsd,faMoneyBillAlt,faShieldAlt)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(require('vue-moment'));
