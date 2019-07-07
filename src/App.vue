@@ -9,7 +9,7 @@
 
             <ul class="list-unstyled components" style="border-bottom:none">
                 <li>
-                    <a href="#" @click="toggleClass()">  
+                    <a href="#" @click="toggleClass()" >  
                         <div class="minimize"><font-awesome-icon :icon="['fas', 'list']" class="icon alt " style="font-size:1em;" /> menu</div>
                         <div class="maximize"><font-awesome-icon :icon="['fas', 'list']" class="icon alt " style="font-size:30px;" /></div>
                     </a>
@@ -21,31 +21,31 @@
                         
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
+                        <li >
                             
-                            <div class="minimize"><a @click="simpananTab()" href="#"><font-awesome-icon :icon="['fas', 'home']" class="icon alt " style="font-size:1em;" /> Home</a></div>
-                            <div class="maximize"><a @click="simpananTab()" href="#"><font-awesome-icon :icon="['fas', 'home']" class="icon alt " style="font-size:30px;" /> </a></div>
-                            
-                        </li>
-                        <li>
-                            <div class="minimize"><a @click="pokokTab()" href="#"><font-awesome-icon :icon="['fas', 'shield-alt']" class="icon alt " style="font-size:1em;" /> Pokok</a></div>
-                            <div class="maximize"><a @click="pokokTab()" href="#"><font-awesome-icon :icon="['fas', 'shield-alt']" class="icon alt " style="font-size:30px;" /> </a></div>
+                            <div class="minimize"><a v-bind:class="[ simpananActive ? 'none' : 'activeTab']" @click="simpananTab()" href="#"><font-awesome-icon :icon="['fas', 'home']" class="icon alt " style="font-size:1em;" /> Home</a></div>
+                            <div class="maximize"><a v-bind:class="[ simpananActive ? 'none' : 'activeTab']" @click="simpananTab()" href="#"><font-awesome-icon :icon="['fas', 'home']" class="icon alt " style="font-size:20px;" /> </a></div>
                             
                         </li>
-                        <li>
-                            <div class="minimize"><a @click="wajibTab()" href="#"><font-awesome-icon :icon="['fas', 'money-bill-alt']" class="icon alt " style="font-size:1em;" /> Wajib</a></div>
-                            <div class="maximize"><a @click="wajibTab()" href="#"><font-awesome-icon :icon="['fas', 'money-bill-alt']" class="icon alt " style="font-size:30px;" /> </a></div>
+                        <li >
+                            <div class="minimize"><a v-bind:class="[ pokokActive ? 'none' : 'activeTab']" @click="pokokTab()" href="#"><font-awesome-icon :icon="['fas', 'shield-alt']" class="icon alt " style="font-size:1em;" /> Pokok</a></div>
+                            <div class="maximize"><a v-bind:class="[ pokokActive ? 'none' : 'activeTab']" @click="pokokTab()" href="#"><font-awesome-icon :icon="['fas', 'shield-alt']" class="icon alt " style="font-size:20px;" /> </a></div>
                             
                         </li>
-                        <li>
-                            <div class="minimize"><a @click="sukarelaTab()" href="#"><font-awesome-icon :icon="['fas', 'hand-holding-usd']" class="icon alt " style="font-size:1em;" /> Sukarela</a></div>
-                            <div class="maximize"><a @click="sukarelaTab()" href="#"><font-awesome-icon :icon="['fas', 'hand-holding-usd']" class="icon alt " style="font-size:30px;" /> </a></div>
+                        <li >
+                            <div class="minimize"><a v-bind:class="[ wajibActive ? 'none' : 'activeTab']" @click="wajibTab()" href="#"><font-awesome-icon :icon="['fas', 'money-bill-alt']" class="icon alt " style="font-size:1em;" /> Wajib</a></div>
+                            <div class="maximize"><a v-bind:class="[ wajibActive ? 'none' : 'activeTab']" @click="wajibTab()" href="#"><font-awesome-icon :icon="['fas', 'money-bill-alt']" class="icon alt " style="font-size:20px;" /> </a></div>
+                            
+                        </li>
+                        <li >
+                            <div class="minimize"><a v-bind:class="[ sukarelaActive ? 'none' : 'activeTab']" @click="sukarelaTab()" href="#"><font-awesome-icon :icon="['fas', 'hand-holding-usd']" class="icon alt " style="font-size:1em;" /> Sukarela</a></div>
+                            <div class="maximize"><a v-bind:class="[ sukarelaActive ? 'none' : 'activeTab']" @click="sukarelaTab()" href="#"><font-awesome-icon :icon="['fas', 'hand-holding-usd']" class="icon alt " style="font-size:20px;" /> </a></div>
                             
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a @click="listTab()" href="#">
+                    <a @click="listTab()" href="#" v-bind:class="[ listActive ? 'none' : 'activeTab']">
                         <div class="minimize"><font-awesome-icon :icon="['fas', 'users']" class="icon alt " style="font-size:1em;" /> Anggota</div>
                         <div class="maximize"><font-awesome-icon :icon="['fas', 'users']" class="icon alt " style="font-size:30px;" /> </div>
                         
@@ -65,10 +65,98 @@
 
            
         </nav>
-        <home v-bind:class="[homeActive ? 'hide' : 'none']"/>
+
+        <!-- home -->
+        <div id="content" v-bind:class="[homeActive ?  'hide':'none']">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <h3 >Selamat datang</h3>
+                </div>
+            </nav>
+            
+            <div class="container">  
+               <div class="card-deck">
+                   <div class="card text-white bg-success mb-3" style="max-width: 22rem;" @click="listTab()">
+                    <div class="row card-header">
+                        <div class="col-4"><img class="card-img-top " src="./images/bag.png" alt="Card image cap"></div>
+                        <div class="col-8"><h4>Pendaftaran Simpanan</h4><h7>Daftarkan simpanan anda sekarang</h7></div>
+                    </div>
+                    <div class="card-body text-white text-right">
+                        <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon alt " style="font-size:2em;" />
+                    </div>
+                    </div>
+                    <div class="card text-white bg-success mb-3" style="max-width: 22rem;" @click="listTab()">
+                    <div class="row card-header">
+                        <div class="col-4"><img class="card-img-top " src="./images/list-view.png" alt="Card image cap"></div>
+                        <div class="col-8"><h4>Anggota Terdaftar    </h4><h7>Daftar seluruh anggota terdaftar</h7></div>
+                    </div>
+                    <div class="card-body text-white text-right">
+                        <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon alt " style="font-size:2em;" />
+                    </div>
+                    </div>
+                    <div class="card text-white bg-success mb-3" style="max-width: 22rem;" @click="formTab()">
+                    <div class="row card-header">
+                        <div class="col-4"><img class="card-img-top " src="./images/list-add.png" alt="Card image cap"></div>
+                        <div class="col-8"><h4>Pendaftaran Anggota</h4><h7>Form pendaftaran anggota koperasi</h7></div>
+                    </div>
+                    <div class="card-body text-white text-right">
+                        <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon alt " style="font-size:2em;" />
+                    </div>
+                    </div>
+                
+                </div>
+            </div>
+            
+     </div>
+    
+    <!-- tab home simpanan -->
+    <div id="content" v-bind:class="[simpananActive ?  'hide':'none']">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <h3>Selamat datang</h3>
+                </div>
+            </nav>
+            
+            <div class="container">  
+               <div class="card-deck">
+                   <div class="card text-white bg-success mb-3" style="max-width: 22rem;">
+                    <div class="row card-header">
+                        <div class="col-4"><img class="card-img-top " src="./images/shield.png" alt="Card image cap"></div>
+                        <div class="col-8"><h4>Simpanan pokok</h4><h7>Setor simpanan anda sebagai simpanan pokok</h7></div>
+                    </div>
+                    <div class="card-body text-white text-right" @click="pokokTab()">
+                        <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon alt " style="font-size:2em;" />
+                    </div>
+                    </div>
+                    <div class="card text-white bg-success mb-3" style="max-width: 22rem;" >
+                    <div class="row card-header">
+                        <div class="col-4"><img class="card-img-top " src="./images/arrows.png" alt="Card image cap"></div>
+                        <div class="col-8"><h4>Simpanan wajib</h4><h7>Setor simpanan anda sebagai simpanan wajib</h7></div>
+                    </div>
+                    <div class="card-body text-white text-right" @click="wajibTab()">
+                        <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon alt " style="font-size:2em;" />
+                    </div>
+                    </div>
+                    <div class="card text-white bg-success mb-3" style="max-width: 22rem;">
+                    <div class="row card-header">
+                        <div class="col-4"><img class="card-img-top " src="./images/bag.png" alt="Card image cap"></div>
+                        <div class="col-8"><h4>Simpanan sukarela</h4><h7>Setor simpanan anda sebagai simpanan sukarela</h7></div>
+                    </div>
+                    <div class="card-body text-white text-right" @click="sukarelaTab()">
+                        <font-awesome-icon :icon="['fas', 'arrow-right']" class="icon alt " style="font-size:2em;" />
+                    </div>
+                    </div>
+                
+                </div>
+            </div>
+            
+     </div>
+
         <user-list v-bind:class="[listActive ? 'hide' : 'none']"/>
         <user-form v-bind:class="[formActive ? 'hide' : 'none']"/>
-        <simpanan-home v-bind:class="[simpananActive ? 'hide' : 'none']"/>
+
         <simpanan-pokok v-bind:class="[pokokActive ? 'hide' : 'none']"/>
         <simpanan-wajib v-bind:class="[wajibActive ? 'hide' : 'none']"/>
         <simpanan-sukarela v-bind:class="[sukarelaActive ? 'hide' : 'none']"/>
@@ -228,5 +316,8 @@ export default {
 <style lang="scss">
 .hide{
     display: none;
+}
+.activeTab{
+    background-color: #2b994b;
 }
 </style>

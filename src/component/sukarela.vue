@@ -4,18 +4,18 @@
 
             <nav class="navbar ">
                 <div class="container-fluid">
-                   <h4>Daftar Anggota</h4>
+                   <h4>Daftar Simpanan Sukarela</h4>
                  </div>
             </nav>
             
             
-        <b-modal id="bv-modal-example-suka" hide-footer title="Data setoran">
+        <b-modal id="bv-modal-example-sukarela" hide-footer title="Data setoran">
           <p class="">tolong isi semua data dibawah ini dengan sebenar-benarnya</p>
           <div class="d-block">
             <form @submit.prevent="add">
               <input type="hidden" v-model="form.id">
               <input type="hidden" v-model="form.tanggal_setoran" >
-              <input type="hidden" v-model="form.jenis_setoran" >
+              <input type="hidden" v-model="form.jenis_setoran" value="sukarela">
               <div class="form-group">
                 <input class="form-control" placeholder="Nomor KTA" type="text" v-model="form.kta">
               </div>
@@ -26,7 +26,29 @@
                 <input class="form-control" placeholder="Jumlah setoran" type="number" v-model="form.jumlah_setoran">
               </div>
                 <input type="text" v-model="form.status" style="display:none">
-                <b-button class="btn-success" block type="submit" v-show="!updateSubmit">simpan</b-button>
+                <b-button class="btn-success" block type="submit">simpan</b-button>
+            </form>
+          </div>
+         
+        </b-modal>
+
+         <b-modal id="bv-modal-example-sukarela-update" hide-footer title="Data setoran">
+          <p class="">tolong isi semua data dibawah ini dengan sebenar-benarnya</p>
+          <div class="d-block">
+            <form @submit.prevent="add">
+              <input type="hidden" v-model="form.id">
+              <input type="hidden" v-model="form.tanggal_setoran" >
+              <input type="hidden" v-model="form.jenis_setoran" value="sukarela">
+              <div class="form-group">
+                <input class="form-control" placeholder="Nomor KTA" type="text" v-model="form.kta">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Nama lengkap" type="text" v-model="form.penyetor">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Jumlah setoran" type="number" v-model="form.jumlah_setoran">
+              </div>
+                <input type="text" v-model="form.status" style="display:none">
                 <b-button class="mt-3" block type="submit" v-show="updateSubmit" @click="update(form)">perbaharui</b-button>
             </form>
           </div>
@@ -36,10 +58,7 @@
            <div class="col" style="padding-left:30px">
              <div class="row">
               <div class="col-xs-2">
-                <button class="btn btn-danger right" id="show-btn" @click="$bvModal.show('bv-modal-example-suka')"><font-awesome-icon icon="minus" /> Hapus</button>
-              </div>
-              <div class="col-xs-2">
-                <button class="btn btn-primary right button" id="show-btn" @click="$bvModal.show('bv-modal-example-suka')"><font-awesome-icon icon="plus" /> Tambah</button>
+                <button class="btn btn-primary right button" id="show-btn" @click="$bvModal.show('bv-modal-example-sukarela')"><font-awesome-icon icon="plus" /> Tambah</button>
               </div>
              </div>
            </div>
@@ -55,7 +74,7 @@
            </div>
         </div>
 
-        <table class="table table-bordered" style="table-layout: fixed">
+        <table class="table table-bordered t-width" style="table-layout: auto">
             <thead>
             <tr >
                 <th style="text-align:center">Hapus</th>
@@ -68,14 +87,13 @@
             </tr>
             </thead>
             <tbody>
-                <tr v-for="pokok in simpanan" :key="pokok.jenis_simpanan==='sukarela'" >
-                    <td><center><input type="checkbox" value="delete"></center></td>
-                    <td>{{pokok.kta}}</td>
-                    <td>{{pokok.penyetor}}</td>
-                    <td>{{pokok.tanggal_setoran}}</td>
-                    <td>{{pokok.jumlah_setoran}}</td>
+                <tr  v-for="sukarela in simpanan" :key="sukarela.id"  >
+                    <td>{{sukarela.kta}}</td>
+                    <td>{{sukarela.penyetor}}</td>
+                    <td>{{sukarela.tanggal_setoran}}</td>
+                    <td>{{sukarela.jumlah_setoran}}</td>
                     <td></td>
-                    <td style="text-align:center"><p class="link-t" id="show-btn" @click="($bvModal.show('bv-modal-example')),(edit(user))"><font-awesome-icon icon="pen" /></p></td>
+                    <td><center><p><font-awesome-icon class="link-t" id="show-btn" @click="($bvModal.show('bv-modal-example-sukarela-update')),(edit(user))" icon="pen" /><font-awesome-icon class="link-d" id="show-btn" @click="del(user)" icon="trash-alt" /></p></center></td>
                     
                     <!-- <button @click="del(user)">Delete</button> -->
                 </tr>    
@@ -101,7 +119,7 @@ export default {
           id: '',
           kta:'',
           penyetor: '',
-          jenis_setoran:'pokok',
+          jenis_setoran:'sukarela',
           tanggal_setoran:moment().format('D/MM/YYYY'),
           jumlah_setoran:'',
           total_setoran:''
@@ -138,7 +156,7 @@ export default {
     },
     edit(user){ 
         this.updateSubmit = true
-        this.form.id = pokok.id 
+        this.form.id = sukarela.id 
         this.form.penyetor = '',
         this.form.kta='',
         this.jenis_setoran='',
@@ -181,18 +199,35 @@ export default {
 .button-group{
   padding-left: 1%
   }
+.t-width{
+
+  min-width: 1100px;
+}
 .right{
   margin-right: 5px;
 }
-table{
-  font-size: 12px;
-  margin: 0;
+.table td.fit, 
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
 }
 .link-t{
   cursor: pointer;
   
+
+  font-size: 20px; 
   &:hover{
     color: blue;    
+    text-decoration: underline;
+  }
+}
+
+.link-d{
+  cursor: pointer;
+  margin-right:5px;
+  font-size: 20px; 
+  &:hover{
+    color: red;    
     text-decoration: underline;
   }
 }

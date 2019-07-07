@@ -7,21 +7,28 @@
                    <h4>Daftar Anggota</h4>
                  </div>
             </nav>
-
-            <div class="form-group row">
-              <div class="col-xs-2">
-                <button class="btn btn-primary right button" id="show-btn" @click="$bvModal.show('bv-modal-example')"><font-awesome-icon icon="plus" /> Tambah</button>
-              </div>
-              <div class="col-xs-2">
+        <div class="row"  style="padding-bottom:10px" >
+           <div class="col" style="padding-left:30px">
+             <div class="row">
+              <!-- <div class="col-xs-2">
                 <button class="btn btn-danger right" id="show-btn" @click="$bvModal.show('bv-modal-example')"><font-awesome-icon icon="minus" /> Hapus</button>
-              </div>
+              </div> -->
               <div class="col-xs-2">
-                <input class="form-control" id="ex1" type="text">
+                <button class="btn btn-primary right button" id="show-btn" @click="($bvModal.show('bv-modal-example')),(reset(form))"><font-awesome-icon icon="plus" /> Tambah</button>
               </div>
-              <div class="col-xs-2">
-                <button class="btn btn-primary right button" id="show-btn"><font-awesome-icon :icon="['fas', 'search']" class="icon alt"/></button>
+             </div>
+           </div>
+           <div class="col" style="margin-left:47%">
+             <div class="row" >
+                 <div class="col-lg-9">
+                <input class="form-control"  id="ex1" type="text">
               </div>
-            </div>
+              <div class="col">
+                <button class="btn btn-primary button" id="show-btn"><font-awesome-icon :icon="['fas', 'search']" class="icon alt"/></button>
+              </div>
+             </div>
+           </div>
+        </div>
             
         <b-modal id="bv-modal-example" hide-footer title="Masukan Data Anggota">
           <p class="">tolong isi semua data dibawah ini dengan sebenar-benarnya</p>
@@ -39,8 +46,8 @@
               </div>
               <div class="form-group">
                 <label for="" style="padding-left:2%">jenis kelamin:</label>
-                <label class="radio-inline" style="padding-right:20%; padding-left:5%"><input type="radio" name="optradio">Laki-laki</label>
-                <label class="radio-inline"><input type="radio" name="optradio">Perempuan</label>
+                                <label class="radio-inline" style="padding-right:20%; padding-left:5%"><input type="radio" name="optradio" value="Pria" v-model="form.jenis_kelamin">Pria</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="Wanita" v-model="form.jenis_kelamin">Wanita</label>
               </div>
               <div class="form-group">
                 <textarea class="form-control" placeholder="Alamat lengkap" type="text" v-model="form.alamat_lengkap"></textarea>
@@ -54,45 +61,88 @@
               <div class="form-group">
                 <input class="form-control" placeholder="Email" type="email" v-model="form.email">
               </div>
-                <input type="hidden" v-model="form.status">
-                <b-button class="btn-success" block type="submit" v-show="!updateSubmit">tambahkan</b-button>
+                <input type="hidden" v-model="form.status" value="active">
+                <b-button class="btn-success" block type="submit">tambahkan</b-button>
+                <!-- <b-button class="mt-3" block type="submit" v-show="updateSubmit" @click="update(form)">update</b-button> -->
+            </form>
+          </div>
+         
+        </b-modal>
+
+        <b-modal id="bv-modal-example-update" hide-footer title="Masukan Data Anggota">
+          <p class="">tolong isi semua data dibawah ini dengan sebenar-benarnya</p>
+          <div class="d-block">
+            <form @submit.prevent="add">
+              <input type="hidden" v-model="form.id">
+              <div class="form-group">
+                <input class="form-control" placeholder="Nomor KTA" type="text" v-model="form.kta">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Nama lengkap" type="text" v-model="form.nama_lengkap">
+              </div>
+              <div class="form-group">
+                <input placeholder="Tanggal Lahir" class="textbox-n form-control" type="text" onfocus="(this.type='date')"  id="date" v-model="form.tanggal_lahir">
+              </div>
+              <div class="form-group">
+                <label for="" style="padding-left:2%">jenis kelamin:</label>
+                <label class="radio-inline" style="padding-right:20%; padding-left:5%"><input type="radio" name="optradio" value="Pria" v-model="form.jenis_kelamin">Pria</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="Wanita" v-model="form.jenis_kelamin">Wanita</label>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" placeholder="Alamat lengkap" type="text" v-model="form.alamat_lengkap"></textarea>
+              </div>
+              <div class="form-group">
+                <input placeholder="Tanggal bergabung" class="textbox-n form-control" type="text" onfocus="(this.type='date')"  id="date" v-model="form.tgl_bergabung">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Nomor telephone" type="text" v-model="form.nomor_telephone">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Email" type="email" v-model="form.email">
+              </div>
+                <input type="hidden" v-model="form.status" value="active">
+                <!-- <b-button class="btn-success" block type="submit" v-show="!updateSubmit">tambahkan</b-button> -->
                 <b-button class="mt-3" block type="submit" v-show="updateSubmit" @click="update(form)">update</b-button>
             </form>
           </div>
          
         </b-modal>
-        <table class="table table-bordered" style="table-layout: fixed">
+        <div style="overflow-x:auto;">
+          <table class="table table-bordered t-width" style="table-layout: auto">
             <thead>
             <tr>
-                <th>Hapus</th>
-                <th>Id KTA</th>
-                <th>Nama Lengkap</th>
-                <th>Tanggal Lahir</th>
-                <th>Jenis Kelamin</th>
-                <th>alamat</th>
-                <th>No Tlp</th>
-                <th>Tanggal Bergabung</th>
-                <th>Status</th>
-                <th>edit</th>
+                <!-- <th>Id KTA</th> -->
+                <th >Nama Lengkap</th>
+                <th >Tanggal Lahir</th>
+                <th >Jenis Kelamin</th>
+                <th >alamat</th>
+                <th >No Tlp</th>
+                <th >Email</th>
+                <th >Tanggal Bergabung</th>
+                <th >Status</th>
+                <th >Action</th>
             </tr>
             </thead>
             <tbody>
                 <tr v-for="user in users" :key="user.id">
-                    <td><center><input type="checkbox" value="delete"></center></td>
-                    <td>{{user.kta}}</td>
+                    
+                    <!-- <td>{{user.kta}}</td> -->
                     <td>{{user.nama_lengkap}}</td>
                     <td>{{user.tanggal_lahir}}</td>
                     <td>{{user.jenis_kelamin}}</td>
                     <td>{{user.alamat_lengkap}}</td>
                     <td>{{user.nomor_telephone}}</td>
-                    <td>{{user.tanggal_bergabung}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.tgl_bergabung}}</td>
                     <td>{{user.status}}</td>
-                    <td><p class="link-t" id="show-btn" @click="($bvModal.show('bv-modal-example')),(edit(user))"><font-awesome-icon icon="pen" /></p></td>
+                    <td><center><p><font-awesome-icon class="link-t" id="show-btn" @click="($bvModal.show('bv-modal-example-update')),(edit(user))" icon="pen" /><font-awesome-icon class="link-d" id="show-btn" @click="del(user)" icon="trash-alt" /></p></center></td>
                     
                     <!-- <button @click="del(user)">Delete</button> -->
                 </tr>    
             </tbody>
         </table>
+        </div>
+        
         </div>
     </div>
  
@@ -116,7 +166,7 @@ export default {
           tgl_bergabung:'',
           nomor_telephone:'',
           email:'',
-          status:''
+          status:'active'
         },
         users: '',
         updateSubmit: false
@@ -134,6 +184,18 @@ export default {
         console.log(err);
         
       })
+    },
+    reset(form){ 
+        this.form.id = ''
+        this.form.nama_lengkap = ''
+        this.form.kta=''
+        this.form.nama_lengkap= ''
+        this.form.tanggal_lahir=''
+        this.form.jenis_kelamin=''
+        this.form.alamat_lengkap=''
+        this.form.tgl_bergabung=''
+        this.form.nomor_telephone=''
+        this.form.email=''
     },
       add(){
       axios.post('http://localhost:3000/users/', this.form).then(res => {
@@ -195,19 +257,35 @@ export default {
 </script>
 
 <style lang="scss">
+.t-width{
 
+  min-width: 1100px;
+}
 .right{
   margin-right: 5px;
 }
-table{
-  font-size: 12px;
-  margin: 0;
+.table td.fit, 
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
 }
 .link-t{
   cursor: pointer;
   
+
+  font-size: 20px; 
   &:hover{
     color: blue;    
+    text-decoration: underline;
+  }
+}
+
+.link-d{
+  cursor: pointer;
+  margin-right:5px;
+  font-size: 20px; 
+  &:hover{
+    color: red;    
     text-decoration: underline;
   }
 }

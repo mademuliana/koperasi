@@ -10,6 +10,7 @@ import './css/style4.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
@@ -35,7 +36,7 @@ export default {
   }
 }
 
-library.add(faPen,faPlus,faMinus,faSearch,faArrowRight,faList,faMoneyBillWave,faUsers,faHome,faHandHoldingUsd,faMoneyBillAlt,faShieldAlt)
+library.add(faPen,faPlus,faMinus,faSearch,faArrowRight,faList,faMoneyBillWave,faUsers,faHome,faHandHoldingUsd,faMoneyBillAlt,faShieldAlt,faTrashAlt)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(require('vue-moment'));
