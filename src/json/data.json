@@ -1,19 +1,6 @@
 {
   "users": [
     {
-      "kta": "1104505065",
-      "nama_lengkap": "Yuda Aditya Putra",
-      "tanggal_lahir": "AGRRAGAR",
-      "jenis_kelamin": "Pria",
-      "alamat_lengkap": "Jln Banyar anyar",
-      "tgl_bergabung": null,
-      "nomor_telephone": "869373",
-      "email": "",
-      "status": "Active",
-      "id": 0
-    },
-    {
-      "id": 1,
       "kta": "1104505066",
       "nama_lengkap": "Dody Pratama",
       "tanggal_lahir": null,
@@ -22,7 +9,8 @@
       "tgl_bergabung": null,
       "nomor_telephone": "0361471233",
       "email": "",
-      "status": "Active"
+      "status": "Active",
+      "id": 1
     },
     {
       "id": 2,
@@ -59,53 +47,125 @@
       "nomor_telephone": "08578351920",
       "email": "",
       "status": "Active"
+    },
+    {
+      "id": 6,
+      "kta": "1104505065",
+      "nama_lengkap": "Yuda Aditya Putra",
+      "tanggal_lahir": "AGRRAGAR",
+      "jenis_kelamin": "Pria",
+      "alamat_lengkap": "Jln Banyar anyar",
+      "tgl_bergabung": null,
+      "nomor_telephone": "869373",
+      "email": "",
+      "status": "Active"
+    },
+    {
+      "kta": "34135",
+      "nama_lengkap": "adfadf",
+      "tanggal_lahir": "2019-07-01",
+      "jenis_kelamin": "laki-laki",
+      "alamat_lengkap": "dafdsagvsadg",
+      "tgl_bergabung": "2019-07-10",
+      "nomor_telephone": "083824297101",
+      "email": "1dafcdafc@sgvsarsrgs.com",
+      "status": "active",
+      "id": 22
+    },
+    {
+      "id": 23,
+      "kta": "13413413",
+      "nama_lengkap": "dsagfsadvadv",
+      "tanggal_lahir": "2019-07-22",
+      "jenis_kelamin": "",
+      "alamat_lengkap": "aegaegaegea",
+      "tgl_bergabung": "0131-12-04",
+      "nomor_telephone": "083824297101",
+      "email": "aegaeaeg@gvsagrsg",
+      "status": "active"
+    },
+    {
+      "id": 24,
+      "kta": "134513515331",
+      "nama_lengkap": "afcadfgsafdgbadf",
+      "tanggal_lahir": "2019-07-11",
+      "jenis_kelamin": "",
+      "alamat_lengkap": "advadvadbadv",
+      "tgl_bergabung": "2019-07-17",
+      "nomor_telephone": "adfgadgfadfg",
+      "email": "adgadgfadfaf@vsfgsgf",
+      "status": "active"
     }
   ],
-  "simpanan": [
-    {
-      "id": 0,
-      "kta": "1104505065",
-      "penyetor": "Yuda Aditya Putra",
-      "jenis_setoran": "pokok",
-      "tanggal_setoran": "01/02/2019",
-      "jumlah_setoran": "1233334",
-      "total_setoran": "3453000"
-    },
-    {
-      "id": 1,
-      "kta": "1104505066",
-      "penyetor": "Dody Pratama",
-      "jenis_setoran": "wajib",
-      "tanggal_setoran": "01/02/2019",
-      "jumlah_setoran": "53000",
-      "total_setoran": "433255"
-    },
-    {
-      "id": 2,
-      "kta": "1104505067",
-      "penyetor": "Bagus Pratama",
-      "jenis_setoran": "pokok",
-      "tanggal_setoran": "01/02/2019",
-      "jumlah_setoran": "980000",
-      "total_setoran": "100000"
-    },
-    {
-      "id": 3,
-      "kta": "1104505068",
-      "penyetor": "Ayu Aristya",
-      "jenis_setoran": "pokok",
-      "tanggal_setoran": "01/02/2019",
-      "jumlah_setoran": "54400",
-      "total_setoran": "54333300"
-    },
-    {
-      "id": 4,
-      "kta": "1104505069",
-      "penyetor": "putu hangga",
-      "jenis_setoran": "wajib",
-      "tanggal_setoran": "01/02/2019",
-      "jumlah_setoran": "8880000",
-      "total_setoran": "100000"
-    }
-  ]
+      "pokok":[
+        {
+          "id": 0,
+          "kta": "1104505065",
+          "penyetor": "Yuda Aditya Putra",
+          "tanggal_setoran": "01/02/2019",
+          "jumlah_setoran": "1233334",
+          "total_setoran": "3453000"
+        },
+        {
+          "id": 3,
+          "kta": "1104505068",
+          "penyetor": "Ayu Aristya",
+          "tanggal_setoran": "01/02/2019",
+          "jumlah_setoran": "54400",
+          "total_setoran": "54333300"
+        },
+        {
+          "id": 4,
+          "kta": "1104505069",
+          "penyetor": "putu hangga",
+          "tanggal_setoran": "01/02/2019",
+          "jumlah_setoran": "8880000",
+          "total_setoran": "100000"
+        }
+      ],
+      "wajib":[
+        {
+          "id": 0,
+          "kta": "1104505065",
+          "penyetor": "Yuda Aditya Putra",
+          "tanggal_setoran": "01/02/2019",
+          "jumlah_setoran": "1233334",
+          "total_setoran": "3453000"
+        },
+        {
+          "id": 1,
+          "kta": "1104505066",
+          "penyetor": "Dody Pratama",
+          "tanggal_setoran": "01/02/2019",
+          "jumlah_setoran": "53000",
+          "total_setoran": "433255"
+        }
+      ],
+    
+      "sukarela":[
+        {
+          "id": 2,
+          "kta": "1104505067",
+          "penyetor": "Bagus Pratama",
+          "tanggal_setoran": "01/02/2019",
+          "jumlah_setoran": "980000",
+          "total_setoran": "100000"
+        },
+        {
+          "id": 3,
+          "kta": "1104505068",
+          "penyetor": "Ayu Aristya",
+          "tanggal_setoran": "01/02/2019",
+          "jumlah_setoran": "54400",
+          "total_setoran": "54333300"
+        },
+        {
+          "id": 4,
+          "kta": "1104505069",
+          "penyetor": "putu hangga",
+          "tanggal_setoran": "01/02/2019",
+          "jumlah_setoran": "8880000",
+          "total_setoran": "100000"
+        }
+      ]
 }

@@ -2,11 +2,19 @@
   <div>
       <div id="content">
 
-            <nav class="navbar ">
+            <nav class="navbar" style="margin-bottom: 0px">
                 <div class="container-fluid">
                    <h4>Daftar Anggota</h4>
                  </div>
+                  
             </nav>
+
+            <nav class="navbar" style=" background-color: #33ab56;   border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+                 <div class="container-fluid">
+                   <p style="color: white;">klik pada masing-masing judul tabel untuk mengurutkan berdasarkan judul tersebut</p>
+                 </div> 
+            </nav>
+
         <div class="row"  style="padding-bottom:10px" >
            <div class="col" style="padding-left:30px">
              <div class="row">
@@ -107,24 +115,24 @@
           </div>
          
         </b-modal>
-        <div style="overflow-x:auto;">
-          <table class="table table-bordered t-width" style="table-layout: auto">
-            <thead>
+        <div style="overflow-x: scroll;">
+          <table class="table table-bordered t-width" style="table-layout: fixed">
+            <thead >
             <tr>
                 <!-- <th>Id KTA</th> -->
-                <th >Nama Lengkap</th>
-                <th >Tanggal Lahir</th>
-                <th >Jenis Kelamin</th>
-                <th >alamat</th>
-                <th >No Tlp</th>
-                <th >Email</th>
-                <th >Tanggal Bergabung</th>
-                <th >Status</th>
-                <th >Action</th>
+                <th class="thead-link" @click="sort('nama_lengkap')">Nama Lengkap</th>
+                <th class="thead-link" @click="sort('tanggal_lahir')">Tanggal Lahir</th>
+                <th class="thead-link" @click="sort('jenis_kelamin')">Jenis Kelamin</th>
+                <th class="thead-link" @click="sort('alamat_lengkap')">alamat</th>
+                <th class="thead-link" @click="sort('nomor_telephone')">No Tlp</th>
+                <th class="thead-link" @click="sort('email')">Email</th>
+                <th class="thead-link" @click="sort('tgl_bergabung')">Tanggal Bergabung</th>
+                <th class="thead-link">Status</th>
+                <th class="thead-link">Action</th>
             </tr>
             </thead>
             <tbody>
-                <tr v-for="user in users" :key="user.id">
+                <tr v-for="user in sortedUsers" :key="user.id">
                     
                     <!-- <td>{{user.kta}}</td> -->
                     <td>{{user.nama_lengkap}}</td>
@@ -144,6 +152,7 @@
         </div>
         
         </div>
+        <div style="display:none">debug: sort={{currentSort}}, dir={{currentSortDir}}</div> 
     </div>
  
 </template>
@@ -168,16 +177,25 @@ export default {
           email:'',
           status:'active'
         },
-        users: '',
-        updateSubmit: false
+        users: [],
+        updateSubmit: false,
+        currentSort:'name',
+        currentSortDir:'asc'
     }
   },
-  
+
   mounted() {
-    this.load()
+    this.loadUser()
   },
   methods: {
-    load(){
+    sort:function(s) {
+      //if s == current sort, reverse
+      if(s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
+      }
+      this.currentSort = s;
+    },
+    loadUser(){
         axios.get('http://localhost:3000/users').then(res => {
         this.users = res.data
       }).catch ((err) => {
@@ -185,6 +203,7 @@ export default {
         
       })
     },
+    
     reset(form){ 
         this.form.id = ''
         this.form.nama_lengkap = ''
@@ -252,14 +271,37 @@ export default {
           this.users.splice(index,1)
       })
     }
+  },
+  computed:{
+    sortedUsers:function() {
+      return this.users.sort((a,b) => {
+        let modifier = 1;
+        if(this.currentSortDir === 'desc') modifier = -1;
+        if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+        if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+        return 0;
+      });
+    }
   }
 }
 </script>
 
 <style lang="scss">
+.collumn{ min-width: 200px; }
+.thead-link{
+  background-color: #2b994b;
+  color: white;
+  border: #2b994b;
+  cursor: pointer;
+  &:hover{
+    background-color: #33ab56;  
+    text-decoration: none;
+  }
+}
 .t-width{
 
-  min-width: 1100px;
+  min-width: 1000px;
+  max-width: 1000px;
 }
 .right{
   margin-right: 5px;

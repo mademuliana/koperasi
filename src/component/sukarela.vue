@@ -2,10 +2,16 @@
   <div>
       <div id="content">
 
-            <nav class="navbar ">
+            <nav class="navbar " style="margin-bottom: 0px">
                 <div class="container-fluid">
                    <h4>Daftar Simpanan Sukarela</h4>
                  </div>
+            </nav>
+
+            <nav class="navbar" style=" background-color: #33ab56;   border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+                 <div class="container-fluid">
+                   <p style="color: white;">klik pada masing-masing judul tabel untuk mengurutkan berdasarkan judul tersebut</p>
+                 </div> 
             </nav>
             
             
@@ -74,20 +80,19 @@
            </div>
         </div>
 
-        <table class="table table-bordered t-width" style="table-layout: auto">
+        <table class="table table-bordered t-width" style="table-layout: fixed">
             <thead>
             <tr >
-                <th style="text-align:center">Hapus</th>
-                <th>Id KTA</th>
-                <th>Penyetor</th>
-                <th>Tanggal setoran</th>
-                <th>Jumlah yang disetor</th>
-                <th>Total setoran</th>
-                <th style="text-align:center">Edit</th>
+                <th class="thead-link" @click="sort('kta')">Id KTA</th>
+                <th class="thead-link" @click="sort('penyetor')">Penyetor</th>
+                <th class="thead-link" @click="sort('tanggal_setoran')">Tanggal setoran</th>
+                <th class="thead-link" @click="sort('jumlah_setoran')">Jumlah yang disetor</th>
+                <th class="thead-link" @click="sort('total_setoran')">Total setoran</th>
+                <th class="thead-link" style="text-align:center">Edit</th>
             </tr>
             </thead>
             <tbody>
-                <tr  v-for="sukarela in simpanan" :key="sukarela.id"  >
+                <tr  v-for="sukarela in sortedSukarela" :key="sukarela.id"  >
                     <td>{{sukarela.kta}}</td>
                     <td>{{sukarela.penyetor}}</td>
                     <td>{{sukarela.tanggal_setoran}}</td>
@@ -124,20 +129,29 @@ export default {
           jumlah_setoran:'',
           total_setoran:''
         },
-        simpanan: '',
-        updateSubmit: false
+        simpanan: [],
+        updateSubmit: false,
+        currentSort:'name',
+        currentSortDir:'asc'
     }
   },
   
   mounted() {
-    this.load()
+    this.loadSimpanan()
   },
   methods: {
+    sort:function(s) {
+      //if s == current sort, reverse
+      if(s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
+      }
+      this.currentSort = s;
+    },
     isToday(date) {
             return moment().format('d/MM/YYYY');
         },
-    load(){
-        axios.get('http://localhost:3000/simpanan').then(res => {
+    loadSimpanan(){
+        axios.get('http://localhost:3000/sukarela').then(res => {
         this.simpanan = res.data
       }).catch ((err) => {
         console.log(err);
@@ -145,7 +159,7 @@ export default {
       })
     },
       add(){
-      axios.post('http://localhost:3000/simpanan', this.form).then(res => {
+      axios.post('http://localhost:3000/sukarela', this.form).then(res => {
           this.load()
           this.form.penyetor = '',
           this.form.kta='',
@@ -164,7 +178,7 @@ export default {
         this.total_setoran=''
     },
     update(form){ 
-       return axios.put('http://localhost:3000/simpanan' + form.id , {
+       return axios.put('http://localhost:3000/sukarela' + form.id , {
          kta:this.form.kta,penyetor:this.form.penyetor,jenis_setoran:this.jenis_setoran,jumlah_setoran:this.jumlah_setoran,total_setoran:this.total_setoran }).then(res => {
         this.load()
         this.form.penyetor = '',
@@ -179,11 +193,22 @@ export default {
       })
     },
     del(user){
-      axios.delete('http://localhost:3000/simpanan' + user.id).then(res =>{
+      axios.delete('http://localhost:3000/sukarela' + user.id).then(res =>{
           this.load()
           let index = this.users.indexOf(form.name)
           this.users.splice(index,1)
       })
+    }
+  },
+  computed:{
+    sortedSukarela:function() {
+      return this.simpanan.sort((a,b) => {
+        let modifier = 1;
+        if(this.currentSortDir === 'desc') modifier = -1;
+        if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+        if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+        return 0;
+      });
     }
   }
 }
